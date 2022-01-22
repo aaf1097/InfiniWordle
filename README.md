@@ -1,1 +1,2 @@
 # InfiniWordle
+Infinite Wordle
