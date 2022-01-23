@@ -6,21 +6,25 @@ class KeyBoard :
     keysList = []
     keysList[:0] = aphabetsString
     for alph in keysList :
-        keyboard[alph] = True
+        keyboard[alph] = 'WHITE'
 
 
-    def keyboardPrinter(self, keys) :
+    def keyboardPrinter(self) :
         
-        for key in keys : 
-            key = key.upper()
-            self.keyboard[key] = False
+        # for key in keys : 
+        #     key = key.upper()
+        #     self.keyboard[key] = 'WHITE'
 
         def printKeyVal(keyboardDict, key) :
-            if self.keyboard[key] == True :
+            if self.keyboard[key] == 'WHITE':
                 return key
-            else :
+            elif self.keyboard[key] == 'RED':
                 return Constants.COLOR.RED + key + Constants.COLOR.ENDC
-    
+            elif self.keyboard[key] == 'YELLOW':
+                return Constants.COLOR.YELLOW + key + Constants.COLOR.ENDC
+            elif self.keyboard[key] == 'GREEN':
+                return Constants.COLOR.GREEN + key + Constants.COLOR.ENDC
+            
         for key in self.keyboard : 
             if key == "P" : 
                 print(printKeyVal(self.keyboard, key))
@@ -32,6 +36,3 @@ class KeyBoard :
                 print(printKeyVal(self.keyboard, key))
             else :
                 print(printKeyVal(self.keyboard, key), end =" ")
-
-
-

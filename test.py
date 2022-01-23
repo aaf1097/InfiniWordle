@@ -6,16 +6,14 @@ from Constants import Constants
 
 
 s = "aaron"
+def PrintWord(n,s):
+    print(f'\033[{n}F' + s)
+print(s)
 for count in range(1000) :
-    for i in range(3):
-        print(s)
+    PrintWord(1,Constants.COLOR.RED+s+Constants.COLOR.ENDC)
     time.sleep(2)
-    print("\033[4F")
+    PrintWord(1,s)
     time.sleep(2)
-    for i in range(3):
-        print(Constants.COLOR.RED+s+Constants.COLOR.ENDC)
-    time.sleep(2)
-    print("\033[4F")
 
 
 # print("bye")
