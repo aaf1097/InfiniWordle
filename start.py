@@ -7,7 +7,7 @@ from Words import Words
 from Printer import KeyBoard
 
 def PrintWord(guesses,keyboard=None):
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('''START''')
     for i in range(Constants.maxTries):
         if i<len(guesses):
@@ -50,15 +50,16 @@ def main():
                 coloredguess = coloredguess + Constants.COLOR.RED + currentLetter  + Constants.COLOR.ENDC
                 keyboard.keyboard[currentLetter] = 'RED' 
                 flag = False
-        y += 1
+            y += 1
         guesses.append(coloredguess)
         PrintWord(guesses,keyboard)
 
-    if flag == True :
-        print("Game Won")
-        sys.exit(0)
+        if flag == True :
+            print("!!Game Won!!")
+            sys.exit(0)
 
     print("Game Over!")
+    print("The word was : ",end="")
     print(''.join(chosenWord))
 
 if __name__ == '__main__':
