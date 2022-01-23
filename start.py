@@ -18,11 +18,10 @@ keyboard = KeyBoard()
 
 
 # print(str(chosenWord))
-# print(wordSize)
+
 unusableLetters = []
 for i in range(Constants.maxTries) :
     if unusableLetters :
-        print(Constants.COLOR.RED + "Unusable letters are :"+ Constants.COLOR.ENDC)
         keyboard.keyboardPrinter(unusableLetters)
     
     value = input("Guess " + str(i+1) + " : ")
@@ -30,19 +29,23 @@ for i in range(Constants.maxTries) :
     ipList[:0] = value
     flag = True
     y = 0
+
     for currentLetter in ipList :
         if currentLetter in chosenWord :
             if currentLetter == chosenWord[y] :
-                print(Constants.COLOR.GREEN + currentLetter +" character good at position : " + str(y) + Constants.COLOR.ENDC)
+                print(Constants.COLOR.GREEN + currentLetter + Constants.COLOR.ENDC, end ="")
             else :
-                print(Constants.COLOR.YELLOW + currentLetter + " is present in the word but position is wrong" + Constants.COLOR.ENDC)
+                print(Constants.COLOR.YELLOW + currentLetter + Constants.COLOR.ENDC, end ="")
                 flag = False
         else :
-            print(Constants.COLOR.RED + currentLetter + " is not present in the word" + Constants.COLOR.ENDC)
+            print(Constants.COLOR.RED + currentLetter  + Constants.COLOR.ENDC, end ="")
             if not currentLetter in unusableLetters :
-                unusableLetters.append(currentLetter)
+                unusableLetters.append(currentLetter) 
             flag = False
         y += 1
+
+    print()
+
 
     if flag == True :
         print("Game Won")
