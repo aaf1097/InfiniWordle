@@ -1,9 +1,10 @@
 from queue import Empty
 import random
 import sys
-from tkinter import *
 from Constants import Constants
 from Words import Words
+from Printer import KeyBoard
+
 
 print("Start")
 word = Words()
@@ -13,13 +14,16 @@ chosenWord = []
 chosenWord[:0] = random.choice(worldList)
 wordSize = len(chosenWord)
 
+keyboard = KeyBoard()
+
+
 # print(str(chosenWord))
 # print(wordSize)
 unusableLetters = []
 for i in range(Constants.maxTries) :
     if unusableLetters :
-        print(Constants.COLOR.RED + "Unusable letters are :\n" + str(unusableLetters) + Constants.COLOR.ENDC)
-        print()
+        print(Constants.COLOR.RED + "Unusable letters are :"+ Constants.COLOR.ENDC)
+        keyboard.keyboardPrinter(unusableLetters)
     
     value = input("Guess " + str(i+1) + " : ")
     ipList = []
@@ -47,12 +51,3 @@ for i in range(Constants.maxTries) :
 
 print("Game Over!")
 print(chosenWord)    
-
-# master = Tk()
-# w = Canvas(master, width=40, height=60)
-# w.pack()
-# canvas_height=20
-# canvas_width=200
-# y = int(canvas_height / 2)
-# w.create_line(0, y, canvas_width, y )
-# mainloop()
